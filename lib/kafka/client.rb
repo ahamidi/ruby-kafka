@@ -615,6 +615,24 @@ module Kafka
       @cluster.describe_group(group_id)
     end
 
+    # Describe broker configs
+    #
+    # @param broker_id [int] the id of the broker
+    # @param configs [Array] array of config keys.
+    # @return [Array<Kafka::Protocol::DescribeConfigsResponse::ConfigEntry>]
+    def describe_configs(broker_id, configs = [])
+      @cluster.describe_configs(broker_id, configs)
+    end
+
+    # Alter broker configs
+    #
+    # @param broker_id [int] the id of the broker
+    # @param configs [Array] array of config strings.
+    # @return [nil]
+    def describe_configs(broker_id, configs = [])
+      @cluster.alter_configs(broker_id, configs)
+    end
+
     # Create partitions for a topic.
     #
     # @param name [String] the name of the topic.
